@@ -13,34 +13,52 @@ echo ""
 read -p "Select Dev (d), Test (t) or Prod (p) to refresh data: " refreshEnv
 
 if [ "$refreshEnv" = "d" ]; then
-    echo "Restarting rollout for DEVELOPMENT environment\n"
+    echo ""
+    echo "Restarting DEVELOPMENT"
+    echo ""
 
     oc project ec38a0-dev
     oc rollout restart deployment/gscloud-dev-wfs
     oc rollout restart deployment/gscloud-dev-wms
+    oc rollout restart deployment/geokml
 
-    echo "Check wfs restart at: https://console.apps.gold.devops.gov.bc.ca/k8s/ns/ec38a0-dev/deployments/gscloud-dev-wfs/pods"
-    echo "Check wms restart at: https://console.apps.gold.devops.gov.bc.ca/k8s/ns/ec38a0-dev/deployments/gscloud-dev-wms/pods"
+    echo ""
+    echo "Check status for:"
+    echo "WFS: https://console.apps.gold.devops.gov.bc.ca/k8s/ns/ec38a0-dev/deployments/gscloud-dev-wfs/pods"
+    echo "WMS: https://console.apps.gold.devops.gov.bc.ca/k8s/ns/ec38a0-dev/deployments/gscloud-dev-wms/pods"
+    echo "KML: https://console.apps.gold.devops.gov.bc.ca/k8s/ns/ec38a0-dev/deployments/geokml/pods"
 
 elif [ "$refreshEnv" = "t" ]; then
-    echo "Restarting rollout for TEST environment\n"
+    echo ""
+    echo "Restarting TEST"
+    echo ""
 
     oc project ec38a0-test
     oc rollout restart deployment/gscloud-test-wfs
     oc rollout restart deployment/gscloud-test-wms
+    oc rollout restart deployment/geokml
 
-    echo "Check wfs restart at: https://console.apps.gold.devops.gov.bc.ca/k8s/ns/ec38a0-test/deployments/gscloud-test-wfs/pods"
-    echo "Check wms restart at: https://console.apps.gold.devops.gov.bc.ca/k8s/ns/ec38a0-test/deployments/gscloud-test-wms/pods"
+    echo ""
+    echo "Check status for:"
+    echo "WFS: https://console.apps.gold.devops.gov.bc.ca/k8s/ns/ec38a0-test/deployments/gscloud-test-wfs/pods"
+    echo "WMS: https://console.apps.gold.devops.gov.bc.ca/k8s/ns/ec38a0-test/deployments/gscloud-test-wms/pods"
+    echo "KML: https://console.apps.gold.devops.gov.bc.ca/k8s/ns/ec38a0-test/deployments/geokml/pods"
 
 elif [ "$refreshEnv" = "p" ]; then
-    echo "Restarting rollout for PRODUCTION environment\n"
+    echo ""
+    echo "Restarting PRODUCTION"
+    echo ""
 
     oc project ec38a0-prod
     oc rollout restart deployment/gscloud-prod-wfs
     oc rollout restart deployment/gscloud-prod-wms
+    oc rollout restart deployment/geokml
 
-    echo "Check wfs restart at: https://console.apps.gold.devops.gov.bc.ca/k8s/ns/ec38a0-prod/deployments/gscloud-prod-wfs/pods"
-    echo "Check wms restart at: https://console.apps.gold.devops.gov.bc.ca/k8s/ns/ec38a0-prod/deployments/gscloud-prod-wms/pods"
+    echo ""
+    echo "Check status for:"
+    echo "WFS: https://console.apps.gold.devops.gov.bc.ca/k8s/ns/ec38a0-prod/deployments/gscloud-prod-wfs/pods"
+    echo "WMS: https://console.apps.gold.devops.gov.bc.ca/k8s/ns/ec38a0-prod/deployments/gscloud-prod-wms/pods"
+    echo "KML: https://console.apps.gold.devops.gov.bc.ca/k8s/ns/ec38a0-prod/deployments/geokml/pods"
 else 
     echo ""
     exit 0
